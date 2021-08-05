@@ -12,8 +12,6 @@ class News {
 
   addNews = async () => {
     this.newsList = [];
-    // eslint-disable-next-line no-console
-    console.log('Я тут');
     for (let i = 1; i < 5; i++) {
       await axios.get<NewsI[]>(`https://api.hnpwa.com/v0/news/${i}.json`).then((response) => {
         this.newsList = this.newsList.concat(response.data).sort((a, b) => {
