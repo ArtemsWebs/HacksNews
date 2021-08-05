@@ -51,16 +51,16 @@ const Main = observer((props) => {
 
       <ButtonContainer>
         <ButtonGroup aria-label="Basic example">
-          <NavLink to={`/page/${News.pagination}`} onMouseDown={() => News.changePagination(1)}>
+          <NavLink to="/page/1" onClick={() => News.changePagination(1)}>
             <Button variant="secondary">1</Button>
           </NavLink>
-          <NavLink to={`/page/${News.pagination}`} onMouseDown={() => News.changePagination(2)}>
+          <NavLink to="/page/2" onMouseDown={() => News.changePagination(2)}>
             <Button variant="secondary">2</Button>
           </NavLink>
-          <NavLink to={`/page/${News.pagination}`} onMouseDown={() => News.changePagination(3)}>
+          <NavLink to="/page/3" onMouseDown={() => News.changePagination(3)}>
             <Button variant="secondary">3</Button>
           </NavLink>
-          <NavLink to={`/page/${News.pagination}`} onMouseDown={() => News.changePagination(4)}>
+          <NavLink to="/page/4" onMouseDown={() => News.changePagination(4)}>
             <Button variant="secondary">4</Button>
           </NavLink>
         </ButtonGroup>
