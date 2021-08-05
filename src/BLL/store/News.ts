@@ -4,6 +4,7 @@ import axios from 'axios';
 
 class News {
   newsList: NewsI[] = [];
+  pagination = 1;
 
   constructor() {
     makeAutoObservable(this);
@@ -11,21 +12,18 @@ class News {
 
   addNews = async () => {
     this.newsList = [];
+    // eslint-disable-next-line no-console
+    console.log('Я тут');
     for (let i = 1; i < 5; i++) {
       await axios.get<NewsI[]>(`https://api.hnpwa.com/v0/news/${i}.json`).then((response) => {
-        if (i === 4) {
-          this.newsList = this.newsList
-            .concat(response.data)
-            .sort((a, b) => {
-              return b.time - a.time;
-            })
-            .slice(0, 100);
-        } else
-          this.newsList = this.newsList.concat(response.data).sort((a, b) => {
-            return b.time - a.time;
-          });
+        this.newsList = this.newsList.concat(response.data).sort((a, b) => {
+          return b.time - a.time;
+        });
       });
     }
   };
+  changePagination(newPag) {
+    this.pagination = newPag;
+  }
 }
 export default new News();

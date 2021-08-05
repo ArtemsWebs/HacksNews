@@ -35,3 +35,7 @@ export const CommentText = styled(Author)`
   font-weight: 200;
   margin-top: 5px;
 `;
+
+export const ButtonContainer = styled.div`
+  margin-top: 10px;
+`;
