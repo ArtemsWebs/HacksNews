@@ -20,7 +20,7 @@ const CommentsItem = ({ user, content, comments, marginMother, comentCount }) =>
     <div>
       <div onClick={() => setDown((prevState) => !prevState)} className={`ml-${childMargin} transition`}>
         <Author>{user}</Author>
-        <CommentText>{content}</CommentText>
+        <CommentText dangerouslySetInnerHTML={{ __html: content }} />
         <CommentText>
           <b>{`Колличество комментариев: ${comentCount}`}</b>
         </CommentText>
