@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
-import { NewsI } from '../Interface';
+import { NewsI } from '../Type';
 import CommentsItem from './CommentsItem';
 import Button from 'react-bootstrap/Button';
 import { NavLink } from 'react-router-dom';
