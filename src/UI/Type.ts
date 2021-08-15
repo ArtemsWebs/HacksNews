@@ -14,3 +14,12 @@ export type Position = {
   start: number;
   end: number;
 };
+
+export interface NewsI extends News {
+  comments?: NewsI[];
+  content?: string;
+}
+
+export interface ComentsI {
+  comment: NewsI[];
+}
