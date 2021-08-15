@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Author, CommentText } from '../styledComponents';
-import sanitizeHtml from 'sanitize-html';
 import './comments-styled.css';
 import { Markup } from 'interweave';
 
