@@ -5,30 +5,34 @@ import { ButtonContainer } from '../styledComponents';
 import { ButtonGroup } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import News from '../../BLL/store/News';
-import { observer } from 'mobx-react-lite';
 import { Position } from '../Type';
+import { observer } from 'mobx-react-lite';
 
 const Main = observer((props) => {
   //Local state
   //useEffect запускаеться при монтировании компоненты,
   //отвечает за обновление News раз в минуту
+
+  News.setPage();
   const positionMas: Position[] = [
     { start: 0, end: 30 },
     { start: 30, end: 60 },
     { start: 60, end: 90 },
     { start: 90, end: 120 },
   ];
+  console.log(News.newsList);
   let [flag, setFlag] = useState(0);
-
   const pagination = (id: number) => {
+    let i = positionMas[id - 1].start;
     return News.newsList
-      .filter((news, idx) => idx > positionMas[id - 1].start && idx < positionMas[id - 1].end)
-      .map((news, idx) => {
+      .filter((news, idx) => idx >= positionMas[id - 1].start && idx < positionMas[id - 1].end)
+      .map((news) => {
+        i += 1;
         return (
           <NewsComponent
             id={news.id}
             title={news.title}
-            position={idx}
+            position={i}
             raiting={news.points}
             author={news.user}
             date={news.time_ago}
@@ -48,19 +52,18 @@ const Main = observer((props) => {
   return (
     <div>
       <div>{pagination(News.pagination)}</div>
-
       <ButtonContainer>
         <ButtonGroup aria-label="Basic example">
-          <NavLink to="/page/1" onClick={() => News.changePagination(1)}>
+          <NavLink to="/page/1">
             <Button variant="secondary">1</Button>
           </NavLink>
-          <NavLink to="/page/2" onMouseDown={() => News.changePagination(2)}>
+          <NavLink to="/page/2">
             <Button variant="secondary">2</Button>
           </NavLink>
-          <NavLink to="/page/3" onMouseDown={() => News.changePagination(3)}>
+          <NavLink to="/page/3">
             <Button variant="secondary">3</Button>
           </NavLink>
-          <NavLink to="/page/4" onMouseDown={() => News.changePagination(4)}>
+          <NavLink to="/page/4">
             <Button variant="secondary">4</Button>
           </NavLink>
         </ButtonGroup>
