@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 import News from '../../BLL/store/News';
 import Main from './Main';
 
-import { NewsI } from '../Interface';
+import { NewsI } from '../Type';
 
 const NewsItem = observer(() => {
   const [id, setId] = useState(Number(window.location.href.split('/').slice(-1)));
