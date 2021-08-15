@@ -31,7 +31,7 @@ const Main = ({ news }) => {
   return (
     <div>
       <NewsContainerD>
-        <a href={news != null ? news.url : '#'}>
+        <a href={news != null ? news.url : '#'} target="_blank" rel="noreferrer">
           <TextHref> Я ссылка на новость, нажми меня </TextHref>
         </a>
       </NewsContainerD>
