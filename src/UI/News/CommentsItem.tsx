@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Author, CommentText } from '../styledComponents';
 import './comments-styled.css';
 import { Markup } from 'interweave';
+import sanitizeHtml from 'sanitize-html';
 
 const CommentsItem = ({ user, content, comments, marginMother, comentCount }) => {
   const [down, setDown] = useState<boolean>(false);
@@ -21,8 +22,7 @@ const CommentsItem = ({ user, content, comments, marginMother, comentCount }) =>
       <div onClick={() => setDown((prevState) => !prevState)} className={`ml-${childMargin} transition`}>
         <Author>{user}</Author>
         <CommentText>
-          {' '}
-          <Markup content={content} />
+          <Markup content={sanitizeHtml(content, { allowedTags: false, allowedAttributes: false })} />
         </CommentText>
         <CommentText>
           <b>{`Колличество комментариев: ${comentCount}`}</b>
