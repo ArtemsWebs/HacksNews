@@ -23,11 +23,7 @@ const Comments = ({ id }) => {
     addComents(id);
     const time = setInterval(() => {
       if (flag) addComents(id);
-      // eslint-disable-next-line no-console
-      console.log('Новости');
     }, 5000);
-    // eslint-disable-next-line no-console
-    console.log('Новости');
     return () => clearInterval(time);
   }, [flag, id]);
 
