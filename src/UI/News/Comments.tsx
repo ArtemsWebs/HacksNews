@@ -8,6 +8,8 @@ import { NavLink } from 'react-router-dom';
 
 const Comments = ({ id }) => {
   const [comments, setComments] = useState<NewsI[]>([]);
+  let [flag, setFlag] = useState(true);
+
   const addComents = (id: number): void => {
     axios.get(`https://api.hnpwa.com/v0/item/${id}.json`).then((response) => {
       if (response.data) {
@@ -18,13 +20,16 @@ const Comments = ({ id }) => {
 
   // @ts-ignore
   useEffect(() => {
-    let flag = true;
     addComents(id);
-    setInterval(() => {
+    const time = setInterval(() => {
       if (flag) addComents(id);
-    }, 60000);
-    return () => (flag = false);
-  }, [id]);
+      // eslint-disable-next-line no-console
+      console.log('Новости');
+    }, 5000);
+    // eslint-disable-next-line no-console
+    console.log('Новости');
+    return () => clearInterval(time);
+  }, [flag, id]);
 
   return (
     <div>
@@ -42,7 +47,7 @@ const Comments = ({ id }) => {
             );
           })
         : null}
-      <Button variant="outline-success" size="lg" type="button" onClick={() => addComents(id)}>
+      <Button variant="outline-success" size="lg" type="button" onClick={() => setFlag((prevState) => !prevState)}>
         Обновить
       </Button>{' '}
       <NavLink to={'/'}>
