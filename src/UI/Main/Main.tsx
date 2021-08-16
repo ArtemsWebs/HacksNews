@@ -20,8 +20,7 @@ const Main = observer((props) => {
     { start: 60, end: 90 },
     { start: 90, end: 120 },
   ];
-  console.log(News.newsList);
-  let [flag, setFlag] = useState(0);
+  let [flag, setFlag] = useState(true);
   const pagination = (id: number) => {
     let i = positionMas[id - 1].start;
     return News.newsList
@@ -70,7 +69,7 @@ const Main = observer((props) => {
       </ButtonContainer>
 
       <ButtonContainer>
-        <Button variant="outline-success" size="lg" type="button" onClick={() => setFlag((prevState) => prevState + 1)}>
+        <Button variant="outline-success" size="lg" type="button" onClick={() => setFlag((prevState) => !prevState)}>
           Обновить
         </Button>{' '}
       </ButtonContainer>
