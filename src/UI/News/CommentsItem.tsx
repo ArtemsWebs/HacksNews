@@ -8,13 +8,11 @@ const CommentsItem = ({ user, content, comments, marginMother, comentCount }) =>
   const [down, setDown] = useState<boolean>(false);
   const [childMargin, setChildMargin] = useState<number>(marginMother);
 
-  // @ts-ignore
   useEffect(() => {
     let flag = true;
     if (flag) {
       setChildMargin((prev) => prev + 20);
     }
-    return () => (flag = false);
   }, []);
 
   return (

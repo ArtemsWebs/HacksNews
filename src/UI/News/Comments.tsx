@@ -18,7 +18,6 @@ const Comments = ({ id }) => {
     });
   };
 
-  // @ts-ignore
   useEffect(() => {
     addComents(id);
     const time = setInterval(() => {
